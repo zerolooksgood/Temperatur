@@ -13,7 +13,10 @@ namespace Temperatur
         static void Main(string[] args)
         {
             //Oppg 1
-            StreamReader file = new StreamReader("C:\\Users\\mariu\\OneDrive - Viken fylkeskommune\\Documents\\VGS Mailand 2023-2025 Marius RB\\2ITA 2024\\Utvikling\\C#\\Oppg Aug 30\\Temperatur\\Temperatur\\temperatur.txt"); //Finner filen som temperaturene er lagret i
+            string currentPath = AppDomain.CurrentDomain.BaseDirectory;
+            DirectoryInfo directoryInfo = new DirectoryInfo(currentPath);
+            DirectoryInfo parentDirectory = directoryInfo.Parent.Parent;
+            StreamReader file = new StreamReader(parentDirectory.FullName + "\\temperatur.txt"); //Finner filen som temperaturene er lagret i
             string line = file.ReadLine(); //Leser en linje fra filen
             int[] list = new int[12];
             int temp = 0;
